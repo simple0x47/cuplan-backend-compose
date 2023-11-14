@@ -38,4 +38,4 @@ if [[ -z ${CUPLAN_DEPS_FIRST_RUN+x} ]]; then
 fi
 
 chmod +x mongosh
-./mongosh mongodb://localhost:27000 --username guest --password guest --file ./db/drop.js --file ./db/organization_permission.js --file ./db/organization.js --file ./db/role.js --file ./db/member.js --file ./db/invitation_code.js
+./mongosh mongodb://localhost:26000 --username guest --password guest --file ./db/drop.js --file ./db/organization_permission.js --file ./db/organization.js --file ./db/role.js --file ./db/member.js --file ./db/invitation_code.js
