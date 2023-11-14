@@ -1,0 +1,29 @@
+version: '3'
+name: cp-api-deployment
+services:
+  cp-api:
+    image: gabriel0simpleg/cp-api:latest
+    container_name: cp-api
+    ports:
+      - "7443:443"
+    environment:
+      - SECRETS_MANAGER_ACCESS_TOKEN=${SECRETS_MANAGER_ACCESS_TOKEN}
+      - CUPLAN_ENVIRONMENT=Production
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+    volumes:
+      - /etc/cuplan:/etc/cuplan
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27000:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+volumes:
+  mongodb_data:

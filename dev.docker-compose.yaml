@@ -1,0 +1,15 @@
+version: '3'
+name: dev-cp-api-deps
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: dev-mongodb
+    ports:
+      - "26000:27017"
+    volumes:
+      - lemongo:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=guest
+      - MONGO_INITDB_ROOT_PASSWORD=guest
+volumes:
+  lemongo:
